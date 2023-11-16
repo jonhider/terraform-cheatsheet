@@ -94,3 +94,6 @@ module "module-name" {
   servers = var.servers
 }
 ```
+
+## Troubleshooting/Logging
+<p>`TF_LOG` enables logging and can be set to the oneo of the following log levels: **TRACE**, **DEBUG**, **INFO**, **WARN** or **ERROR**</p>
