@@ -1,4 +1,4 @@
-# Terraform Command Cheat Sheet
+# Terraform Cheat Sheet
 <p>The purpose of this cheat sheet is both a documentation resource of Terraform's most important commands, but also in direct response to interview questions I was recently asked in a job interview.  Terraform commands are quite extensive, but these should should cover most scenarios you might encounter.</p>
 
 ## Terraform Code Formatting/Validation
@@ -7,6 +7,8 @@
 | Command     | Description |
 | ----------- | ----------- |
 | terraform fmt|Format code per Hashicorp Language standards|
+| terraform fmt -check|Checks if input is formatted|
+| terraform fmt -recursive|Formats the files in subdirectories.  By default, it only processes the given directory|
 | ||
 | terraform validate|Validate syntax of Terraform code.|
 | terraform validate -backend-config='C:\directory_path'|Validates code syntax and downloads the provider plugins to specific directory|
@@ -59,14 +61,35 @@
 | terraform destroy -var 'foo-bar'|Sets variable in the Terraform configuraiton file.  Flag can be used multiple times|
 | terraform destroy -var-file="filename"|Sets variables in the configuration file.  If present, terraform.tfvars or .auto.tfvars files are automatically loaded and command not necessary|
 
+## Comments
+
+| Command     | Description |
+| ----------- | ----------- |
+|#|Single line comment|
+|//|Single line comment, but alterative to #|
+|/* ... */| Multi-line comment|
+
 ## Miscellaaneous Commands
 | Command     | Description |
 | ----------- | ----------- |
 | terraform version|Display version of Terraform.exe, you're currently using.  Warns if version is out of date|
 
 ## Terraform Module
+<p>Terraform modules are set of configuration files in a single directory.  They're a very powerful way to re-use code and stick to the DRY 'Do Not Repeat Yoursself' principle</p>
+<p>Modules help organize and provide re-usability of the configuration, providing consistency and ensuring best practices.</p>  
 <p>Configuration file ending with .tf or .tf.json, consisting of resources, inputs, and outputs.  The main root module that has the main configuration file, can consume other modules.  Hierarchal structure is defined as: root module can ingest child module and child module can invoke other child modules.</p>
 
 Code: `module.<rootmodulename>.module.<childmodulename>`
 
-  `module "module-name" { }`
+  ```
+  module "module-name" {
+    # path to module directory
+    # source argument is mandatory for all modules
+    source = "../modules/module_name"
+
+    #module inputs
+    vm_id = var.vm_id
+    instance_type = var.instance_type
+    servers = var.servers
+  }
+  ```
