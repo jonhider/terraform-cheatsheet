@@ -62,20 +62,17 @@
 | terraform destroy -var-file="filename"|Sets variables in the configuration file.  If present, terraform.tfvars or .auto.tfvars files are automatically loaded and command not necessary|
 
 ## Comments
-
 | Command     | Description |
 | ----------- | ----------- |
 |#|Single line comment|
 |//|Single line comment, but alterative to #|
 |/* ... */| Multi-line comment|
 
-## Miscellaaneous Commands
+## miscellaneous Commands
 | Command     | Description |
 | ----------- | ----------- |
 | terraform version|Display version of Terraform.exe, you're currently using.  Warns if version is out of date|
 
-<p></p>
-<p></p>
 ## Terraform Module
 <p>Terraform modules are set of configuration files in a single directory.  They're a very powerful way to re-use code and stick to the DRY 'Do Not Repeat Yoursself' principle</p>
 <p>Modules help organize and provide re-usability of the configuration, providing consistency and ensuring best practices.</p>  
