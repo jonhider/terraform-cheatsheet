@@ -74,6 +74,7 @@
 | ----------- | ----------- |
 | terraform version|Display version of Terraform.exe, you're currently using.  Warns if version is out of date|
 
+
 ## Terraform Module
 <p>Terraform modules are set of configuration files in a single directory.  They're a very powerful way to re-use code and stick to the DRY 'Do Not Repeat Yoursself' principle</p>
 <p>Modules help organize and provide re-usability of the configuration, providing consistency and ensuring best practices.</p>  
@@ -83,15 +84,15 @@
 module.<rootmodulename>.module.<childmodulename>
 ```
 
-  ```
-  module "module-name" {
-    # path to module directory
-    # source argument is mandatory for all modules
-    source = "../modules/module_name"
+```
+module "module-name" {
+  # path to module directory
+  # source argument is mandatory for all modules
+  source = "../modules/module_name"
 
-    #module inputs
-    vm_id = var.vm_id
-    instance_type = var.instance_type
-    servers = var.servers
-  }
-  ```
+  #module inputs
+  vm_id = var.vm_id
+  instance_type = var.instance_type
+  servers = var.servers
+}
+```
