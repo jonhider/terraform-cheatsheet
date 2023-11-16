@@ -1,1 +1,1 @@
-# terraform-cheatsheet
+# Terraform Cheat Sheet
