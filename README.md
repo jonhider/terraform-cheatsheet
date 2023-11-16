@@ -1,1 +1,1 @@
-# Terraform Cheat Sheet
+# Terraform Command Cheat Sheet
