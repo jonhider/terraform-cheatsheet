@@ -1,8 +1,72 @@
 # Terraform Command Cheat Sheet
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Donec massa sapien faucibus et molestie ac feugiat. Laoreet non curabitur gravida arcu ac tortor dignissim convallis. Lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit. Eros donec ac odio tempor. Nisi porta lorem mollis aliquam ut. A condimentum vitae sapien pellentesque. Quam viverra orci sagittis eu volutpat odio facilisis mauris sit. Mauris a diam maecenas sed enim ut. Blandit turpis cursus in hac. Neque convallis a cras semper auctor neque vitae tempus quam. Eu turpis egestas pretium aenean pharetra. Leo a diam sollicitudin tempor id. Sed enim ut sem viverra.</p>
+<p>The purpose of this cheat sheet is both a documentation resource of Terraform's most important commands, but also in direct response to interview questions I was recently asked in a job interview.  Terraform commands are quite extensive, but these should should cover most scenarios you might encounter.</p>
 
-# Initialization
-| Comman      | Description |
+## Terraform Code Formatting/Validation
+<p>Terraform validate validates your code and looks for any syntax errors in the configuration files.  Can be run explicitely, but run impliciltly during execuretion of 'terraform plan' or 'terraform apply' commands</p>
+
+| Command     | Description |
 | ----------- | ----------- |
-| Terraform Init      | Initialize the directory and pulldown providers|
-| Paragraph   | Text        |
+| terraform fmt|Format code per Hashicorp Language standards|
+| ||
+| terraform validate|Validate syntax of Terraform code.|
+| terraform validate -backend-config='C:\directory_path'|Validates code syntax and downloads the provider plugins to specific directory|
+| terraform validate -backend=false|Validate syntax of Terraform code, but skips the backend validation|
+
+## terraform init
+<p>First command run and executed within the users working directory.  Used to initialize the working directory, which contains the working Terraform configuration files.  Safe to run multiple times and should be when there are changes to the modiles, providers or backend providers</p>
+
+| Command     | Description |
+| ----------- | ----------- |
+| terraform init|Intialization of the working terraform directory and download of terraform providers.  Can be executed as many times as desired|
+| terraform init -get-plugins=false|Intialization of the working terraform directory and don't download of terraform providers|
+
+## Plan
+<p>Creates the execution plan and performs a refresh of the backend.  Additionally, determines which actions are needed to be performed to achieve desired infrastructure state.  If no changes detected, you will be notified Terraform is not performing any chagnges to the infrastructure.</p>
+
+| Command     | Description |
+| ----------- | ----------- |
+| terraform plan|Command creates the execution plan.|
+| terraform plan -input=true|Asks for input variable, if not directly set|
+| terraform plan -out=path|Writes a plan file to a given path, which can be used as input to the apply command|
+| terraform plan -state=statefile|Provides path to a Terraform state file, used to look up Terraform-managed resources|
+| terraform plan -var 'foo-bar'|Sets variable in the Terraform configuraiton file.  Flag can be used multiple times|
+| terraform plan -var-file="filename"|Sets variables in the configuration file.  If present, terraform.tfvars or .auto.tfvars files are automatically loaded and command not necessary|
+
+## Apply
+<p>Provisions or updates the infrastructure.  Additionally, updates the state file and can be stored in the local or remote backend.</p>
+
+| Command     | Description |
+| ----------- | ----------- |
+| terraform apply|Provisions and updates the infrastructure.  Also updates the tf.state file, which is stored in the local or remote backend|
+| terraform apply -auto-approve|Skip interactive approval of plan before applying|
+| terraform apply -backup=path:|Provides path to backup of existing state file before modification|
+| terraform apply -input=true|Reqeusts variable input, if not directly set|
+| terraform apply -lock-timemout=0s|Duration to retry a lock state|
+| terraform apply -refresh=true|Updates the state prior to checking for differences|
+| terraform apply -target=resource|Targets a specific infrastructure resource|
+| terraform apply -var 'foo-bar'|Sets variable in the Terraform configuraiton file.  Flag can be used multiple times|
+| terraform apply -var-file="filename"|Sets variables in the configuration file.  If present, terraform.tfvars or .auto.tfvars files are automatically loaded and command not necessary|
+
+## Destroy
+<p>When executed, presents an execution plan for all resources to be deleted and askes for confirmation, before execution, as once executed, the process can't be undone.</p>
+
+| Command     | Description |
+| ----------- | ----------- |
+| terraform destroy|Delete all defined resources in configuration file and update the state file as necessary|
+| terraform destroy -auto-approve|Skip interactive approval of plan before applying|
+| terraform destroy -backup=path:|Provides path to backup of existing state file before modification|
+| terraform destroy -target=resource|Targets a specific infrastructure resource|
+| terraform destroy -var 'foo-bar'|Sets variable in the Terraform configuraiton file.  Flag can be used multiple times|
+| terraform destroy -var-file="filename"|Sets variables in the configuration file.  If present, terraform.tfvars or .auto.tfvars files are automatically loaded and command not necessary|
+
+## Miscellaaneous Commands
+| Command     | Description |
+| ----------- | ----------- |
+| terraform version|Display version of Terraform.exe, you're currently using.  Warns if version is out of date|
+
+## Terraform Module
+<p>Configuration file ending with .tf or .tf.json, consisting of resources, inputs, and outputs.  The main root module that has the main configuration file, can consume other modules.  Hierarchal structure is defined as: root module can ingest child module and child module can invoke other child modules.</p>
+
+Code: `module.<rootmodulename>.module.<childmodulename>`
+
+  `module "module-name" { }`
