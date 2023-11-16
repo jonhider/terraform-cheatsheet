@@ -96,7 +96,7 @@ module "module-name" {
 ```
 
 ## Troubleshooting/Logging
-<p>```TF_LOG``` enables logging and can be set to the oneo of the following log levels: <b>TRACE</b>, <b>DEBUG</b>, <b>INFO</b>, <b>WARN</b> or <b>ERROR</b></p>
+```TF_LOG``` enables logging and can be set to the oneo of the following log levels: **TRACE**, <b>DEBUG</b>, <b>INFO</b>, <b>WARN</b> or <b>ERROR</b>
 ```
 export TF_LOG_PATH=terraform.log
 terraform apply
