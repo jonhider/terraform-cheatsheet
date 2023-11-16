@@ -96,4 +96,4 @@ module "module-name" {
 ```
 
 ## Troubleshooting/Logging
-<p>`TF_LOG` enables logging and can be set to the oneo of the following log levels: **TRACE**, **DEBUG**, **INFO**, **WARN** or **ERROR**</p>
+<p>`TF_LOG` enables logging and can be set to the oneo of the following log levels: <b>TRACE</b>, **DEBUG**, **INFO**, **WARN** or **ERROR**</p>
