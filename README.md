@@ -79,7 +79,9 @@
 <p>Modules help organize and provide re-usability of the configuration, providing consistency and ensuring best practices.</p>  
 <p>Configuration file ending with .tf or .tf.json, consisting of resources, inputs, and outputs.  The main root module that has the main configuration file, can consume other modules.  Hierarchal structure is defined as: root module can ingest child module and child module can invoke other child modules.</p>
 
-Code: `module.<rootmodulename>.module.<childmodulename>`
+```
+module.<rootmodulename>.module.<childmodulename>
+```
 
   ```
   module "module-name" {
