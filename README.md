@@ -1,5 +1,5 @@
 # Terraform Cheat Sheet
-<p>The purpose of this cheat sheet is both a documentation resource of Terraform's most important commands, but also in direct response to interview questions I was recently asked in a job interview.  Terraform commands are quite extensive, but these should should cover most scenarios you might encounter.</p>
+<p>Purpose of this cheat sheet is both a documentation resource of Terraform's most important commands, but also in direct action to interview questions I was recently asked in a job interview and even though I'm Terraform certified, I wasn't as prepared for the questions I was given, as I should have been.  Terraform commands are quite extensive, but these should should cover most scenarios you might encounter.  This cheat sheet will be al living document and will be updated periodically.</p>
 
 ## Terraform Code Formatting/Validation
 <p>Terraform validate validates your code and looks for any syntax errors in the configuration files.  Can be run explicitely, but run impliciltly during execuretion of 'terraform plan' or 'terraform apply' commands</p>
