@@ -22,7 +22,7 @@
 | terraform init|Intialization of the working terraform directory and download of terraform providers.  Can be executed as many times as desired|
 | terraform init -get-plugins=false|Intialization of the working terraform directory and don't download of terraform providers|
 
-## Plan
+## terraform plan
 <p>Creates the execution plan and performs a refresh of the backend.  Additionally, determines which actions are needed to be performed to achieve desired infrastructure state.  If no changes detected, you will be notified Terraform is not performing any chagnges to the infrastructure.</p>
 
 | Command     | Description |
@@ -34,7 +34,7 @@
 | terraform plan -var 'foo-bar'|Sets variable in the Terraform configuraiton file.  Flag can be used multiple times|
 | terraform plan -var-file="filename"|Sets variables in the configuration file.  If present, terraform.tfvars or .auto.tfvars files are automatically loaded and command not necessary|
 
-## Apply
+## terraform apply
 <p>Provisions or updates the infrastructure.  Additionally, updates the state file and can be stored in the local or remote backend.</p>
 
 | Command     | Description |
@@ -49,7 +49,7 @@
 | terraform apply -var 'foo-bar'|Sets variable in the Terraform configuraiton file.  Flag can be used multiple times|
 | terraform apply -var-file="filename"|Sets variables in the configuration file.  If present, terraform.tfvars or .auto.tfvars files are automatically loaded and command not necessary|
 
-## Destroy
+## terraform destroy
 <p>When executed, presents an execution plan for all resources to be deleted and askes for confirmation, before execution, as once executed, the process can't be undone.</p>
 
 | Command     | Description |
