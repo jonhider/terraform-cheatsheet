@@ -68,7 +68,7 @@
 |//|Single line comment, but alterative to #|
 |/* ... */| Multi-line comment|
 
-## miscellaneous Commands
+## Miscellaneous Commands
 | Command     | Description |
 | ----------- | ----------- |
 | terraform version|Display version of Terraform.exe, you're currently using.  Warns if version is out of date|
